@@ -1,0 +1,3 @@
+[submodule "rantanplan"]
+	path = rantanplan
+	url = https://github.com/ale0xb/rantanplan.git
