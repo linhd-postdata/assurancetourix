@@ -1,7 +1,7 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
 FROM python:3.8-slim
 
-EXPOSE 5002
+RUN apt-get update && apt-get install -y --no-install-recommends git
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -9,18 +9,29 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+RUN mkdir -p /src/server
+
 # Install pip requirements
+
+COPY ./server/requirements.txt /src/server
+RUN python -m pip install -r /src/server/requirements.txt
 
 WORKDIR /src/server
 
-ADD ./server/requirements.txt /src/server
-RUN python -m pip install -r requirements.txt
-# RUN python -m pip install -e rantanplan
+#Download spacy model language 
+RUN python -m spacy download es_core_news_md
+
+#Download rules for Spanish affixes 
+RUN python -m spacy_affixes download es
+
+VOLUME /src/rantanplan
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /src/server
 USER appuser
+
+EXPOSE 5002
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 # CMD ["gunicorn", "--bind", "0.0.0.0:5002", "server.main:app"]

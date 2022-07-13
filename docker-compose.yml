@@ -31,7 +31,8 @@ services:
       context: ./src/
       dockerfile: Dockerfile-server
     volumes: 
-      - ./src:/src
+      - ./src/server:/src/server
+      - rantanplan-volume:/src/rantanplan
     networks:
       - es-net
     ports:
@@ -40,3 +41,12 @@ services:
 networks:
   es-net:
     driver: bridge
+
+volumes:
+    rantanplan-volume:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: ${PWD}/rantanplan
+      external: false
