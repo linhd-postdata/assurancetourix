@@ -48,5 +48,5 @@ volumes:
       driver_opts:
         type: none
         o: bind
-        device: ${PWD}/rantanplan
+        device: ${PWD}/external/rantanplan
       external: false
