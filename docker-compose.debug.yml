@@ -11,5 +11,4 @@ services:
       - 5002:5002
       - 5678:5678
     environment:
-      - FLASK_APP=/src/server/app.py
       - FLASK_DEBUG=1

@@ -9,6 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+ENV FLASK_APP=/src/server/app.py
+
 RUN mkdir -p /src/server
 
 # Install pip requirements
@@ -34,5 +36,5 @@ USER appuser
 EXPOSE 5002
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-# CMD ["gunicorn", "--bind", "0.0.0.0:5002", "server.main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5002", "app:app"]
 
