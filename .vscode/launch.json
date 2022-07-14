@@ -1,22 +1,8 @@
 {
     "configurations": [
-        {
-            "name": "Docker: Python - Flask",
-            "type": "docker",
-            "request": "launch",
-            "preLaunchTask": "docker-run: debug",
-            "python": {
-                "pathMappings": [
-                    {
-                        "localRoot": "${workspaceFolder}",
-                        "remoteRoot": "/server"
-                    }
-                ],
-                "projectType": "flask"
-            }
-        },
-        { // simple attach to running container - works good
+        { // simple attach to running container
             "name": "Python Attach",
+            "preLaunchTask": "docker-compose up web",
             "type": "python",
             "request": "attach",
             "pathMappings": [
@@ -27,6 +13,6 @@
             ],
             "port": 5678,
             "host": "127.0.0.1"
-    },
+        },
     ]
 }
