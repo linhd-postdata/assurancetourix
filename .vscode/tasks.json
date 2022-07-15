@@ -10,10 +10,24 @@
 			  "build": true,
 			},
 			"files": [
-			  "${workspaceFolder}/docker-compose.yml",
-			  "${workspaceFolder}/docker-compose.debug.yml"
+			  "${workspaceFolder}/docker-compose-web.yml",
+			  "${workspaceFolder}/docker-compose-web.debug.yml"
 			]
 		  }
-		}
+		},
+		{
+			"label": "docker-compose up indexer",
+			"type": "docker-compose",
+			"dockerCompose": {
+			  "up": {
+				"detached": true,
+				"build": true,
+			  },
+			  "files": [
+				"${workspaceFolder}/docker-compose-indexer.yml",
+				"${workspaceFolder}/docker-compose-indexer.debug.yml"
+			  ]
+			}
+		  }
 	  ]
 }

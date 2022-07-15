@@ -1,0 +1,18 @@
+FROM python:3.8-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+ADD . /app
+
+RUN pip install -r requirements.txt
+
+#Only download those corpora that are parsed to JSON 
+RUN averell download 3 4 5 6 --corpora-folder corpora
+
+CMD ["python", "indexer.py"]
+
+

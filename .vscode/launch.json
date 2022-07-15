@@ -1,7 +1,7 @@
 {
     "configurations": [
         { // simple attach to running container
-            "name": "Python Attach",
+            "name": "Compose & Attach Web",
             "preLaunchTask": "docker-compose up web",
             "type": "python",
             "request": "attach",
@@ -9,6 +9,46 @@
                 {
                     "localRoot": "${workspaceFolder}/src/server/",
                     "remoteRoot": "/src/server"
+                }
+            ],
+            "port": 5678,
+            "host": "127.0.0.1"
+        },
+        { // simple attach to running container
+            "name": "Attach Web",
+            "type": "python",
+            "request": "attach",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/src/server/",
+                    "remoteRoot": "/src/server"
+                }
+            ],
+            "port": 5678,
+            "host": "127.0.0.1"
+        },
+        { // simple attach to running container
+            "name": "Compose & Attach Indexer",
+            "preLaunchTask": "docker-compose up indexer",
+            "type": "python",
+            "request": "attach",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/indexer/",
+                    "remoteRoot": "/app"
+                }
+            ],
+            "port": 5678,
+            "host": "127.0.0.1"
+        },
+        { // simple attach to running container
+            "name": "Attach Indexer",
+            "type": "python",
+            "request": "attach",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/indexer",
+                    "remoteRoot": "/app"
                 }
             ],
             "port": 5678,
