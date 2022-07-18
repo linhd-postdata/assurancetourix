@@ -32,8 +32,12 @@ services:
     build:
       context: ./indexer/
       dockerfile: Dockerfile-indexer
+    volumes: 
+      - ./indexer:/app
     networks:
       - es-net
+    tty: true
+    command: "/bin/bash"
 
 networks:
   es-net:

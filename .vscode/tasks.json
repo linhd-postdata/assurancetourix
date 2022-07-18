@@ -24,8 +24,7 @@
 				"build": true,
 			  },
 			  "files": [
-				"${workspaceFolder}/docker-compose-indexer.yml",
-				"${workspaceFolder}/docker-compose-indexer.debug.yml"
+				"${workspaceFolder}/docker-compose-indexer.yml"
 			  ]
 			}
 		  }

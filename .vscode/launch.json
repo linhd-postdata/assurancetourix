@@ -47,7 +47,7 @@
             "request": "attach",
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}/indexer",
+                    "localRoot": "${workspaceFolder}/indexer/",
                     "remoteRoot": "/app"
                 }
             ],

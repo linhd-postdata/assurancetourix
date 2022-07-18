@@ -10,9 +10,11 @@ ADD . /app
 
 RUN pip install -r requirements.txt
 
-#Only download those corpora that are parsed to JSON 
-RUN averell download 3 4 5 6 --corpora-folder corpora
+#Download all available Spanish corpora 
+RUN averell download 1 2 3 5 6 --corpora-folder /corpora
 
-CMD ["python", "indexer.py"]
+#For development purposes
+ENTRYPOINT ["tail", "-f", "/dev/null"]
 
-
+# not really needed as the script will be run manually by the user 
+# CMD ["python", "indexer.py"] 
